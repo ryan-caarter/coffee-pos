@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body, html{
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Lobster', cursive;
+  background-color: #f7f1e3; /* Optional: Coffee shop color */
+  color: #3e2723;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns, each taking up equal width */
+  gap: 20px; /* Space between items */
+  margin: 20px;
+}
+
+.center {
+  margin: auto;
+  width: 500;
+  border: 20px solid rgb(74, 111, 74);
+  padding: 10px;
+  text-align: center;
+}
+
+.grid-container-full {
+  display: grid;
+  gap: 50px; /* Space between items */
+  margin: 220px;
+}
+
+.grid-item {
+  font-family: 'Lobster', cursive;
+  background-color: #c0b9b7;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 30;
+}
+
+.option {
+  font-family: 'Lobster', cursive;
+  background-color: #c0b9b7;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
