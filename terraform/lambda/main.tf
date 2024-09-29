@@ -12,8 +12,8 @@ resource "aws_api_gateway_usage_plan" "main" {
   description = "Usage plan for POS Websocket"
 
   throttle_settings {
-    burst_limit = 5  # Adjust as necessary
-    rate_limit  = 10 # Adjust as necessary (requests per second)
+    burst_limit = 5  
+    rate_limit  = 10
   }
 
   api_stages {
@@ -39,12 +39,14 @@ resource "aws_apigatewayv2_stage" "main" {
     throttling_burst_limit = 5
     throttling_rate_limit  = 10
   }
+
   route_settings {
     route_key              = "$disconnect"
     logging_level          = "INFO"
     throttling_burst_limit = 5
     throttling_rate_limit  = 10
   }
+
   route_settings {
     route_key              = "update"
     logging_level          = "INFO"

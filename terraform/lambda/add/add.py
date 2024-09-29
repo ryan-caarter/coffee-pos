@@ -7,7 +7,6 @@ import uuid
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# Initialize DynamoDB and API Gateway clients
 dynamodb = boto3.resource('dynamodb')
 apigw_client = boto3.client('apigatewaymanagementapi')
 

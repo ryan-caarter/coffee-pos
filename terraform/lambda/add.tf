@@ -1,6 +1,4 @@
 resource "aws_lambda_function" "add" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
   filename      = "${var.service_name}-add.zip"
   function_name = "${var.service_name}-add"
   role          = aws_iam_role.iam_for_lambda.arn

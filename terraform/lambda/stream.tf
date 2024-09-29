@@ -1,6 +1,4 @@
 resource "aws_lambda_function" "stream" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
   filename      = "${var.service_name}-stream.zip"
   function_name = "${var.service_name}-stream"
   role          = aws_iam_role.iam_for_lambda.arn
@@ -14,7 +12,7 @@ resource "aws_lambda_function" "stream" {
   environment {
     variables = {
       ORDERS_TABLE_NAME      = var.orders_table_name
-      WEBSOCKET_ENDPOINT     = "https://${var.websocket_id}.execute-api.ap-southeast-2.amazonaws.com/production"
+      WEBSOCKET_ENDPOINT     = "https://${var.websocket_id}.execute-api.ap-southeast-2.amazonaws.com/${aws_apigatewayv2_stage.main.name}"
       CONNECTIONS_TABLE_NAME = var.connections_table_name
     }
   }
@@ -36,25 +34,3 @@ resource "aws_lambda_event_source_mapping" "example" {
   function_name     = aws_lambda_function.stream.arn
   starting_position = "LATEST"
 }
-
-
-# resource "aws_apigatewayv2_integration" "stream" {
-#   api_id           = var.api_id
-#   integration_type = "AWS_PROXY"
-#   integration_uri  = aws_lambda_function.stream.invoke_arn
-# }
-
-# resource "aws_apigatewayv2_route" "stream" {
-#   api_id    = var.api_id
-#   route_key = "stream"
-#   target    = "integrations/${aws_apigatewayv2_integration.stream.id}"
-# }
-
-# resource "aws_lambda_permission" "stream" {
-#   statement_id  = "AllowExecutionFromAPIGateway"
-#   action        = "lambda:InvokeFunction"
-#   function_name = aws_lambda_function.stream.function_name
-#   principal     = "apigateway.amazonaws.com"
-
-#   source_arn = "${var.api_arn}/*"
-# }

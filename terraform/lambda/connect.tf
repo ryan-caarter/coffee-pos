@@ -1,6 +1,4 @@
 resource "aws_lambda_function" "connect" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
   filename      = "${var.service_name}-connect.zip"
   function_name = "${var.service_name}-connect"
   role          = aws_iam_role.iam_for_lambda.arn
@@ -14,8 +12,6 @@ resource "aws_lambda_function" "connect" {
   environment {
     variables = {
       CONNECTIONS_TABLE_NAME = var.connections_table_name
-      WEBSOCKET_ENDPOINT     = "https://${var.websocket_id}.execute-api.ap-southeast-2.amazonaws.com/production"
-      ORDERS_TABLE_NAME      = var.orders_table_name
     }
   }
 }
