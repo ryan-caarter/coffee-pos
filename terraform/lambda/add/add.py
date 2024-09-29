@@ -3,6 +3,7 @@ import json
 import logging
 import boto3
 import uuid
+from datetime import datetime
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -24,8 +25,9 @@ def lambda_handler(event, context):
                         'order_id': f"{uuid.uuid4()}",
                         'customer_name': item['data']['order']['customerName'] or "Unspecified",
                         'item': item['data']['order']['coffee'] or "Flat White",
-                        'milk_type': item['data']['order']['milkType'] or "regular",
-                        'extra_note': item['data']['order']['extraNotes'] or "none"
+                        'milk_type': item['data']['order']['milkType'] or "Regular",
+                        'extra_note': item['data']['order']['extraNotes'] or "None",
+                        "time": f"{datetime.utcnow().isoformat(timespec='microseconds')}"
                     }
                 )
     except Exception as e:

@@ -13,7 +13,7 @@ const OrderQueue = ({ orders, completeOrder, role }) => {
             <h2><strong>{order.customerName && index === 0 ? order.customerName + "'s up next!" : order.customerName}</strong> </h2>
             <p className="grid-item">Coffee: <br/><strong>{order.coffeeType}</strong></p>
             <p className="grid-item">Milk: <br/><strong>{order.milkType}</strong></p>
-            {order.notes && <p className="grid-item">Notes: <br/><strong>{order.notes}</strong></p>}
+            {order.notes !== "None" && <p className="grid-item">Notes: <br/><strong>{order.notes}</strong></p>}
             {role === "Barista" && (<>
                 <p></p> 
                 <button className="grid-item" onClick={() => completeOrder(order)}>Complete</button>

@@ -30,7 +30,8 @@ def lambda_handler(event, context):
                             'customerName': new_item['customer_name']['S'],
                             'coffeeType': new_item['item']['S'],
                             'milkType': new_item['milk_type']['S'],
-                            'notes': new_item['extra_note']['S']
+                            'notes': new_item['extra_note']['S'],
+                            'time': new_item['time']['S']
                         }
                     }
                 elif record.get('eventName') == 'REMOVE':
@@ -46,7 +47,8 @@ def lambda_handler(event, context):
             'statusCode': 200
         }
 
-    for order in order_results["Items"]:
+    sorted_orders = sorted(order_results["Items"], key=lambda x: x['time'])
+    for order in sorted_orders:
         for connection_id in connection_ids:
             message = {
                     'action': 'newOrder',
@@ -55,7 +57,8 @@ def lambda_handler(event, context):
                         'customerName': order['customer_name'],
                         'coffeeType': order['item'],
                         'milkType': order['milk_type'],
-                        'notes': order['extra_note']
+                        'notes': order['extra_note'],
+                        'time': order['time']
                     }
                 }
             post(message, connection_id)

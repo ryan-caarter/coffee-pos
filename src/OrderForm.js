@@ -6,7 +6,7 @@ const coffeeOptions = ["Espresso", "Latte", "Cappuccino", "Americano", "Flat Whi
 const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
   const [customerName, setCustomerName] = useState("");
-  const [milkType, setMilkType] = useState("");
+  const [milkType, setMilkType] = useState("Oat");
   const [extraNotes, setExtraNotes] = useState("");
   
   const handleSubmit = () => {

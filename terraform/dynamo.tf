@@ -30,6 +30,11 @@ resource "aws_dynamodb_table" "orders" {
     type = "S"
   }
 
+  attribute {
+    name = "time"
+    type = "S"
+  }
+
   global_secondary_index {
     name            = "order_id_index"
     hash_key        = "order_id"
@@ -55,6 +60,11 @@ resource "aws_dynamodb_table" "orders" {
     hash_key        = "milk_type"
     projection_type = "ALL"
   }
+  global_secondary_index {
+    name            = "time_index"
+    hash_key        = "time"
+    projection_type = "ALL"
+  }
 }
 resource "aws_dynamodb_table" "connections" {
   name         = "ConnectionsTable"
@@ -69,6 +79,11 @@ resource "aws_dynamodb_table" "connections" {
   attribute {
     name = "userId"
     type = "S"
+  }
+
+  ttl {
+    attribute_name = "timeToLive"
+    enabled = true
   }
 
   global_secondary_index {
