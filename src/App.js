@@ -4,17 +4,16 @@ import OrderForm from "./OrderForm";
 import OrderQueue from "./OrderQueue";
 import RoleSelector from "./RoleSelector";
 
-const webSocket = new WebSocket("wss://2xfeq3ok1b.execute-api.ap-southeast-2.amazonaws.com/production/"); // API Gateway WebSocket URL
+const webSocket = new WebSocket("wss://2xfeq3ok1b.execute-api.ap-southeast-2.amazonaws.com/production/");
 
 const App = () => {
   const [orders, setOrders] = useState([]);
-  const [role, setRole] = useState(""); // Either 'user' or 'barista'
+  const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
 
-    // Save the WebSocket instance
     setWs(webSocket);
     webSocket.onopen = () => {
         console.log('Connected to WebSocket');
@@ -22,11 +21,7 @@ const App = () => {
   
     webSocket.onmessage = (event) => {
         const message = JSON.parse(event.data);
-        console.log(message);
-        console.log("hi");
-
         if (message.action === 'newOrder') {
-            // Add the new order to the state
             setOrders((prevOrders) => [...prevOrders, message.order])
         } else if (message.action === 'removeOrder') {
           setOrders((prevOrders) => prevOrders.filter(order => order.orderId !== message.order.orderId));
@@ -45,8 +40,8 @@ const App = () => {
   const addOrder = (order) => {
     if (ws && order) {
         const message = {
-            action: 'add', // Specify the action or route here
-            data: { order } // Include any data you want to send
+            action: 'add',
+            data: { order }
         };
         console.log(order);
         ws.send(JSON.stringify(message));
@@ -56,15 +51,13 @@ const App = () => {
   const completeOrder = (order) => {
     if (ws && order) {
       const message = {
-          action: 'complete', // Specify the action or route here
-          data: { order } // Include any data you want to send
+          action: 'complete',
+          data: { order }
       };
       console.log(order);
       ws.send(JSON.stringify(message));
     }
   };
-
-  // Submit order logic, etc.
 
   return (
     <div className="App center">

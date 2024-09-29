@@ -14,7 +14,6 @@ const OrderQueue = ({ orders, completeOrder, role }) => {
             <p className="grid-item">Coffee: <br/><strong>{order.coffeeType}</strong></p>
             <p className="grid-item">Milk: <br/><strong>{order.milkType}</strong></p>
             {order.notes && <p className="grid-item">Notes: <br/><strong>{order.notes}</strong></p>}
-            {/* <img src="/img/beans.jpeg" /> */}
             {role === "Barista" && (<>
                 <p></p> 
                 <button className="grid-item" onClick={() => completeOrder(order)}>Complete</button>

@@ -8,7 +8,7 @@ body, html{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Lobster', cursive;
-  background-color: #f7f1e3; /* Optional: Coffee shop color */
+  background-color: #f7f1e3;
   color: #3e2723;
 }
 
