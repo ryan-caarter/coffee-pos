@@ -12,7 +12,7 @@ resource "aws_api_gateway_usage_plan" "main" {
   description = "Usage plan for POS Websocket"
 
   throttle_settings {
-    burst_limit = 5  
+    burst_limit = 5
     rate_limit  = 10
   }
 
