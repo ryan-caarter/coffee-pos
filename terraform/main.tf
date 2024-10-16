@@ -21,13 +21,15 @@ module "lambda" {
   websocket_endpoint      = aws_apigatewayv2_api.main.api_endpoint
   orders_table_stream_arn = aws_dynamodb_table.orders.stream_arn
   websocket_id            = aws_apigatewayv2_api.main.id
+  environment             = var.environment
 }
 
 module "amplify" {
-  source                  = "./amplify"
+  source             = "./amplify"
   websocket_endpoint = aws_apigatewayv2_api.main.api_endpoint
-  stage = module.lambda.stage
-  access_token = var.access_token
+  stage              = module.lambda.stage
+  access_token       = var.access_token
+  environment        = var.environment
 }
 
 output "app_url" {

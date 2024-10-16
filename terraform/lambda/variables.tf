@@ -34,3 +34,7 @@ variable "websocket_endpoint" {
 variable "websocket_id" {
   type = string
 }
+
+variable "environment" {
+  type = string
+}

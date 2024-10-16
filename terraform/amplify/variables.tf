@@ -3,10 +3,14 @@ variable "websocket_endpoint" {
 }
 
 variable "stage" {
-    type = string
+  type = string
 }
 
 variable "access_token" {
-  type = string
+  type      = string
   sensitive = true
+}
+
+variable "environment" {
+  type = string
 }

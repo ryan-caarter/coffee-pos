@@ -31,7 +31,7 @@ resource "aws_apigatewayv2_stage" "main" {
   depends_on  = [aws_api_gateway_account.main]
   auto_deploy = true
   api_id      = var.api_id
-  name        = "production"
+  name        = var.environment
 
   default_route_settings {
     logging_level          = "INFO"
