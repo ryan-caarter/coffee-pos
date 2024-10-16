@@ -4,7 +4,7 @@ import OrderForm from "./OrderForm";
 import OrderQueue from "./OrderQueue";
 import RoleSelector from "./RoleSelector";
 
-const webSocket = new WebSocket(`${process.env.WEBSOCKET_ENDPOINT}/${process.env.STAGE}`);
+const webSocket = new WebSocket(`${process.env.REACT_APP_WEBSOCKET_ENDPOINT}/${process.env.REACT_APP_STAGE}/`);
 
 const App = () => {
   const [orders, setOrders] = useState([]);

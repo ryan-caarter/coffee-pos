@@ -42,8 +42,8 @@ resource "aws_amplify_app" "main" {
 
   
   environment_variables = {
-    WEBSOCKET_ENDPOINT = var.websocket_endpoint
-    STAGE = var.stage
+    REACT_APP_WEBSOCKET_ENDPOINT = var.websocket_endpoint
+    REACT_APP_STAGE = var.stage
   }
 }
 
