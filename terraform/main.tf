@@ -27,4 +27,9 @@ module "amplify" {
   source                  = "./amplify"
   websocket_endpoint = aws_apigatewayv2_api.main.api_endpoint
   stage = module.lambda.stage
+  access_token = var.access_token
+}
+
+output "app_url" {
+  value = module.amplify.app_url
 }

@@ -7,19 +7,12 @@ terraform {
   }
 }
 
-variable "websocket_endpoint" {
-  type = string
-}
-
-variable "stage" {
-    type = string
-}
-
-resource "aws_amplify_app" "example" {
+resource "aws_amplify_app" "main" {
   name       = "coffee pos"
   repository = "https://github.com/ryan-caarter/coffee-pos"
 
-  # The default build_spec added by the Amplify Console for React.
+  enable_branch_auto_deletion =  true
+  
   build_spec = <<-EOT
     version: 1
     frontend:
@@ -39,8 +32,29 @@ resource "aws_amplify_app" "example" {
         - .npm/**/*
   EOT
 
+ custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+  
+  access_token = var.access_token
+}
+
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.main.id
+  branch_name = "main"
+  enable_auto_build = true
+  framework = "React"
+  stage     = "PRODUCTION"
+
+  
   environment_variables = {
     WEBSOCKET_ENDPOINT = var.websocket_endpoint
     STAGE = var.stage
   }
+}
+
+output "app_url" {
+    value = "https://${aws_amplify_app.main.default_domain}"
 }

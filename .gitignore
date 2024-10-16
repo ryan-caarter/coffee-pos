@@ -51,3 +51,4 @@ env.bak/
 venv.bak/
 python_env/
 *.zip
+terraform.tfvars
