@@ -4,7 +4,7 @@ import OrderForm from "./OrderForm";
 import OrderQueue from "./OrderQueue";
 import RoleSelector from "./RoleSelector";
 
-const webSocket = new WebSocket("wss://2xfeq3ok1b.execute-api.ap-southeast-2.amazonaws.com/production/");
+const webSocket = new WebSocket("wss://wlpqzaynd1.execute-api.ap-southeast-2.amazonaws.com/production/");
 
 const App = () => {
   const [orders, setOrders] = useState([]);

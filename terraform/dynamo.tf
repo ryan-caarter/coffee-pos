@@ -4,7 +4,6 @@ resource "aws_dynamodb_table" "orders" {
   hash_key                    = "order_id"
   stream_enabled              = true
   stream_view_type            = "NEW_IMAGE"
-  deletion_protection_enabled = true
 
   attribute {
     name = "order_id"
@@ -71,7 +70,6 @@ resource "aws_dynamodb_table" "connections" {
   name                        = "ConnectionsTable"
   billing_mode                = "PAY_PER_REQUEST"
   hash_key                    = "connectionId"
-  deletion_protection_enabled = true
 
 
   attribute {

@@ -47,12 +47,12 @@ resource "aws_apigatewayv2_stage" "main" {
     throttling_rate_limit  = 10
   }
 
-  route_settings {
-    route_key              = "update"
-    logging_level          = "INFO"
-    throttling_burst_limit = 5
-    throttling_rate_limit  = 10
-  }
+  # route_settings {
+  #   route_key              = "update"
+  #   logging_level          = "INFO"
+  #   throttling_burst_limit = 5
+  #   throttling_rate_limit  = 10
+  # }
 
   default_route_settings {
     logging_level          = "INFO"
