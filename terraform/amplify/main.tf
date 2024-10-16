@@ -16,20 +16,20 @@ resource "aws_amplify_app" "main" {
   build_spec = <<-EOT
     version: 1
     frontend:
-    phases:
-        preBuild:
-        commands:
-            - npm ci --cache .npm --prefer-offline
-        build:
-        commands:
-            - npm run build
-    artifacts:
-        baseDirectory: build
-        files:
-        - '**/*'
-    cache:
-        paths:
-        - .npm/**/*
+        phases:
+            preBuild:
+                commands:
+                    - npm ci --cache .npm --prefer-offline
+            build:
+                commands:
+                    - npm run build
+        artifacts:
+            baseDirectory: build
+            files:
+                - '**/*'
+        cache:
+            paths:
+                - .npm/**/*
   EOT
 
  custom_rule {
@@ -39,6 +39,12 @@ resource "aws_amplify_app" "main" {
   }
   
   access_token = var.access_token
+
+  
+  environment_variables = {
+    WEBSOCKET_ENDPOINT = var.websocket_endpoint
+    STAGE = var.stage
+  }
 }
 
 resource "aws_amplify_branch" "main" {
