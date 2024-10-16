@@ -60,3 +60,7 @@ resource "aws_apigatewayv2_stage" "main" {
     throttling_rate_limit  = 10
   }
 }
+
+output "stage" {
+  value = aws_apigatewayv2_stage.main.name
+}

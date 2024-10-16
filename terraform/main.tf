@@ -22,3 +22,9 @@ module "lambda" {
   orders_table_stream_arn = aws_dynamodb_table.orders.stream_arn
   websocket_id            = aws_apigatewayv2_api.main.id
 }
+
+module "amplify" {
+  source                  = "./amplify"
+  websocket_endpoint = aws_apigatewayv2_api.main.api_endpoint
+  stage = module.lambda.stage
+}
