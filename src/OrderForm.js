@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 
 const coffeeOptions = ["Espresso", "Latte", "Cappuccino", "Americano", "Flat White", "Iced Latte", "Iced Chocolate", "Hot Chocolate"];
+const pastryOptions = ["Croissant", "Caramel Slice", "Crookie", "Muffin"];
 
 const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [milkType, setMilkType] = useState("Oat");
+  const [pastry, setPastry] = useState(null)
   const [extraNotes, setExtraNotes] = useState("");
   
   const handleSubmit = () => {
@@ -23,11 +25,13 @@ const OrderForm = ({ addOrder }) => {
     const order = {
       coffee: selectedCoffee,
       customerName: customerName.toUpperCase(),
+      pastry,
       milkType,
       extraNotes,
     };
     addOrder(order);
     setSelectedCoffee("");
+    setPastry(null)
     setCustomerName("");
     setMilkType("");
     setExtraNotes("");
@@ -36,12 +40,24 @@ const OrderForm = ({ addOrder }) => {
   return (
     <div style={{ border: "8px solid rgb(74, 111, 74)", padding: "10px", marginBottom: "10px" }}>
       <h2>Place an Order</h2>
+      <h3>From the bakery</h3>
+      {pastryOptions.map((pastry) => (
+        <button className="grid-item" style={{padding: 10, margin: 20}} key={pastry} onClick={() => setPastry(pastry)}>
+          {pastry}
+        </button>
+      ))}
+      {pastry && (
+        <h4>Selected: {pastry}</h4>
+      )}
+      <hr style={{ border: 'none', height: '5px', backgroundColor: 'rgb(74, 111, 74)' }}></hr>
+      <h3>To drink</h3>
       {coffeeOptions.map((coffee) => (
         <button className="grid-item" style={{padding: 10, margin: 20}} key={coffee} onClick={() => setSelectedCoffee(coffee)}>
           {coffee}
         </button>
       ))}
-
+      
+      
       {selectedCoffee && (
         <div>
             <h4>{selectedCoffee}</h4>
@@ -72,6 +88,7 @@ const OrderForm = ({ addOrder }) => {
             <br></br>
             <br></br>
             <button className="option" onClick={handleSubmit}>Submit Order</button>
+
         </div>
       )}
     </div>
