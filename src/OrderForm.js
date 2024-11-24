@@ -48,7 +48,7 @@ const OrderForm = ({ addOrder }) => {
       ))}
       {selectedPastry && (
         <>
-        <h4>{selectedPastry}{"        "}</h4>
+        <h4>{selectedPastry}</h4>
         <button className="remove" onClick={() => setSelectedPastry("")}>Remove</button>
         
         </>
@@ -62,7 +62,7 @@ const OrderForm = ({ addOrder }) => {
       ))}
       {selectedCoffee && (
         <>
-            <h4>{selectedCoffee}{"        "}</h4>
+            <h4>{selectedCoffee}</h4>
             <select className="option" name="milkType" onChange={(e) => setMilkType(e.target.value)}>
               <option value="Oat">Oat Milk</option>
               <option value="Coconut">Coconut Milk</option>
@@ -71,7 +71,7 @@ const OrderForm = ({ addOrder }) => {
             </select>
             <br></br>
             <br></br>
-            <button className="remove" onClick={() => setSelectedCoffee("")}>Remove</button>
+            <button className="remove" onClick={() => {setSelectedCoffee(""); setMilkType("");}}>Remove</button>
         </>
       )}
 
