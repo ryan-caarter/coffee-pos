@@ -8,11 +8,11 @@ const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [milkType, setMilkType] = useState("");
-  const [pastry, setPastry] = useState(null)
+  const [selectedPastry, setSelectedPastry] = useState(null)
   const [extraNotes, setExtraNotes] = useState("");
   
   const handleSubmit = () => {
-    if (!selectedCoffee && !pastry) {
+    if (!selectedCoffee && !selectedPastry) {
       alert("Bruh please select something to eat");
       return;
     }
@@ -25,13 +25,13 @@ const OrderForm = ({ addOrder }) => {
     const order = {
       coffee: selectedCoffee,
       customerName: customerName.toUpperCase(),
-      pastry,
+      pastry: selectedPastry,
       milkType,
       extraNotes,
     };
     addOrder(order);
     setSelectedCoffee("");
-    setPastry(null)
+    setSelectedPastry(null)
     setCustomerName("");
     setMilkType("");
     setExtraNotes("");
@@ -42,17 +42,17 @@ const OrderForm = ({ addOrder }) => {
       <h2>Place an Order</h2>
       <h3>From the bakery</h3>
       {pastryOptions.map((pastry) => (
-        <button className="grid-item" style={{padding: 10, margin: 10}} key={pastry} onClick={() => setPastry(pastry)}>
+        <button className="grid-item" style={{padding: 10, margin: 10}} key={pastry} onClick={() => setSelectedPastry(selectedPastry === pastry ? "" : pastry)}>
           {pastry}
         </button>
       ))}
-      {pastry && (
-        <h4>Selected: {pastry}</h4>
+      {selectedPastry && (
+        <h4>Selected: {selectedPastry}</h4>
       )}
       <hr style={{ border: 'none', height: '5px', backgroundColor: 'rgb(74, 111, 74)' }}></hr>
       <h3>To drink</h3>
       {coffeeOptions.map((coffee) => (
-        <button className="grid-item" style={{padding: 10, margin: 10}} key={coffee} onClick={() => setSelectedCoffee(coffee)}>
+        <button className="grid-item" style={{padding: 10, margin: 10}} key={coffee} onClick={() => setSelectedCoffee(selectedCoffee === coffee ? "" : coffee)}>
           {coffee}
         </button>
       ))}
@@ -68,7 +68,7 @@ const OrderForm = ({ addOrder }) => {
         </>
       )}
 
-      {(pastry || selectedCoffee) && 
+      {(selectedPastry || selectedCoffee) && 
       <>
       <br></br>
       <br></br>
