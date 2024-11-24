@@ -11,10 +11,10 @@ const OrderQueue = ({ orders, completeOrder, role }) => {
         orders.map((order, index) => (
           <div className="center" key={index}  style={{ border: "3px solid rgb(74, 111, 74)", padding: "10px", marginBottom: "10px" }} >
             <h2><strong>{order.customerName && index === 0 ? order.customerName + "'s up next!" : order.customerName}</strong> </h2>
-            {order.coffeeType !== "None" && <p className="grid-item"><br/><strong>{order.coffeeType}</strong></p>}
-            {order.milkType !== "None" && <p className="grid-item"><br/><strong>{order.milkType}</strong> milk</p>}
-            {order.pastry !== "None" && <p className="grid-item"> Lil'  <br/><strong>{order.pastry}</strong> for a snacky</p>}
-            {order.notes !== "None" && <p className="grid-item">Extra note: <br/><strong>{order.notes}</strong></p>}
+            {order.coffeeType !== "None" && <p className="grid-item"><strong>{order.coffeeType}</strong></p>}
+            {order.milkType !== "None" && <p className="grid-item"><strong>{order.milkType}</strong> milk</p>}
+            {order.pastry !== "None" && <p className="grid-item"> Lil' <strong>{order.pastry}</strong> for a snacky</p>}
+            {order.notes !== "None" && <p className="grid-item">Extra note: <strong>{order.notes}</strong></p>}
             {role === "Barista" && (
               <>
                 <p></p>
