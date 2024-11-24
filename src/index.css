@@ -49,3 +49,10 @@ body, html{
   text-align: center;
   border-radius: 8px;
 }
+
+.remove {
+  font-family: 'Lobster', cursive;
+  background-color: #c0b9b7;
+  text-align: center;
+  border-radius: 8px;
+}

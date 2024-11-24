@@ -42,29 +42,36 @@ const OrderForm = ({ addOrder }) => {
       <h2>Place an Order</h2>
       <h3>From the bakery</h3>
       {pastryOptions.map((pastry) => (
-        <button className="grid-item" style={{padding: 10, margin: 10}} key={pastry} onClick={() => setSelectedPastry(selectedPastry === pastry ? "" : pastry)}>
+        <button className="grid-item" style={{padding: 10, margin: 10}} key={pastry} onClick={() => setSelectedPastry(pastry)}>
           {pastry}
         </button>
       ))}
       {selectedPastry && (
-        <h4>Selected: {selectedPastry}</h4>
+        <>
+        <h4>{selectedPastry}{"        "}</h4>
+        <button className="remove" onClick={() => setSelectedPastry("")}>Remove</button>
+        
+        </>
       )}
       <hr style={{ border: 'none', height: '5px', backgroundColor: 'rgb(74, 111, 74)' }}></hr>
       <h3>To drink</h3>
       {coffeeOptions.map((coffee) => (
-        <button className="grid-item" style={{padding: 10, margin: 10}} key={coffee} onClick={() => setSelectedCoffee(selectedCoffee === coffee ? "" : coffee)}>
+        <button className="grid-item" style={{padding: 10, margin: 10}} key={coffee} onClick={() => setSelectedCoffee(coffee)}>
           {coffee}
         </button>
       ))}
       {selectedCoffee && (
         <>
-            <h4>{selectedCoffee}</h4>
+            <h4>{selectedCoffee}{"        "}</h4>
             <select className="option" name="milkType" onChange={(e) => setMilkType(e.target.value)}>
               <option value="Oat">Oat Milk</option>
               <option value="Coconut">Coconut Milk</option>
               <option value="Soy">Soy Milk</option>
               <option value="Regular">Regular Milk</option>
             </select>
+            <br></br>
+            <br></br>
+            <button className="remove" onClick={() => setSelectedCoffee("")}>Remove</button>
         </>
       )}
 
