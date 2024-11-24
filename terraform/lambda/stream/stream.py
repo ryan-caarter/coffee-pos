@@ -30,6 +30,7 @@ def lambda_handler(event, context):
                             'customerName': new_item['customer_name']['S'],
                             'coffeeType': new_item['item']['S'],
                             'milkType': new_item['milk_type']['S'],
+                            'pastry': new_item['pastry']['S'],
                             'notes': new_item['extra_note']['S'],
                             'time': new_item['time']['S']
                         }
@@ -57,6 +58,7 @@ def lambda_handler(event, context):
                         'customerName': order['customer_name'],
                         'coffeeType': order['item'],
                         'milkType': order['milk_type'],
+                        'pastry': new_item['pastry'],
                         'notes': order['extra_note'],
                         'time': order['time']
                     }

@@ -26,6 +26,7 @@ def lambda_handler(event, context):
                         'customer_name': item['data']['order']['customerName'] or "Unspecified",
                         'item': item['data']['order']['coffee'] or "Flat White",
                         'milk_type': item['data']['order']['milkType'] or "Regular",
+                        'pastry': item['data']['order']['pastry'] or "None",
                         'extra_note': item['data']['order']['extraNotes'] or "None",
                         "time": f"{datetime.utcnow().isoformat(timespec='microseconds')}"
                     }

@@ -14,6 +14,11 @@ resource "aws_dynamodb_table" "orders" {
     name = "customer_name"
     type = "S"
   }
+   
+  attribute {
+    name = "pastry"
+    type = "S"
+  }
 
   attribute {
     name = "item"
@@ -48,6 +53,11 @@ resource "aws_dynamodb_table" "orders" {
   global_secondary_index {
     name            = "customer_name_index"
     hash_key        = "customer_name"
+    projection_type = "ALL"
+  }
+  global_secondary_index {
+    name            = "pastry_index"
+    hash_key        = "pastry"
     projection_type = "ALL"
   }
   global_secondary_index {
