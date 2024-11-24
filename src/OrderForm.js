@@ -40,7 +40,7 @@ const OrderForm = ({ addOrder }) => {
   return (
     <div style={{ border: "8px solid rgb(74, 111, 74)", padding: "10px", marginBottom: "10px" }}>
       <h2>Place an Order</h2>
-      <h3>From the bakery</h3>
+      <h3>From the kitchen</h3>
       {pastryOptions.map((pastry) => (
         <button className="grid-item" style={{padding: 10, margin: 10}} key={pastry} onClick={() => setSelectedPastry(pastry)}>
           {pastry}
