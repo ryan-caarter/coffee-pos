@@ -24,8 +24,8 @@ def lambda_handler(event, context):
                     Item={
                         'order_id': f"{uuid.uuid4()}",
                         'customer_name': item['data']['order']['customerName'] or "Unspecified",
-                        'item': item['data']['order']['coffee'] or "Flat White",
-                        'milk_type': item['data']['order']['milkType'] or "Regular",
+                        'item': item['data']['order']['coffee'] or "None",
+                        'milk_type': item['data']['order']['milkType'] or "None",
                         'pastry': item['data']['order']['pastry'] or "None",
                         'extra_note': item['data']['order']['extraNotes'] or "None",
                         "time": f"{datetime.utcnow().isoformat(timespec='microseconds')}"

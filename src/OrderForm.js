@@ -7,7 +7,7 @@ const pastryOptions = ["Croissant", "Caramel Slice", "Crookie", "Muffin"];
 const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
   const [customerName, setCustomerName] = useState("");
-  const [milkType, setMilkType] = useState("Oat");
+  const [milkType, setMilkType] = useState("");
   const [pastry, setPastry] = useState(null)
   const [extraNotes, setExtraNotes] = useState("");
   
