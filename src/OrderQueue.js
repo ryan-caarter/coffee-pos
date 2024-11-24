@@ -14,7 +14,7 @@ const OrderQueue = ({ orders, completeOrder, role }) => {
             {order.coffeeType !== "None" && <p className="grid-item">Coffee: <br/><strong>{order.coffeeType}</strong></p>}
             {order.milkType !== "None" && <p className="grid-item">Milk: <br/><strong>{order.milkType}</strong></p>}
             {order.notes !== "None" && <p className="grid-item">Notes: <br/><strong>{order.notes}</strong></p>}
-            {order.pastry !== "None" && <p className="grid-item"> With a lil'  <br/><strong>{order.notes}</strong> for a snakk</p>}
+            {order.pastry !== "None" && <p className="grid-item"> With a lil'  <br/><strong>{order.pastry}</strong> for a snakk</p>}
             {role === "Barista" && (<>
                 <p></p> 
                 <button className="grid-item" onClick={() => completeOrder(order)}>Complete</button>
