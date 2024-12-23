@@ -9,7 +9,6 @@ const webSocket = new WebSocket(`${process.env.REACT_APP_WEBSOCKET_ENDPOINT}/${p
 const App = () => {
   const [orders, setOrders] = useState([]);
   const [role, setRole] = useState("");
-  const [name, setName] = useState("");
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
@@ -62,7 +61,7 @@ const App = () => {
   return (
     <div className="App center">
       {!role ? (
-        <RoleSelector setRole={setRole} setName={setName} />
+        <RoleSelector setRole={setRole} role={role}/>
       ) : (
         <>
           {role === "Customer" && 
@@ -71,9 +70,12 @@ const App = () => {
               Welcome to Mongrel Mojo!
             </h1>
           </div>}
-          {role === "Customer" && <OrderForm addOrder={addOrder} role={role} name={name}/>}
-          <h2>Queue</h2>
-          <OrderQueue orders={orders} completeOrder={completeOrder} role={role} />
+          {role === "Customer" ?
+           <OrderForm addOrder={addOrder} role={role}/> : 
+          <>
+            <h2>Queue</h2>
+            <OrderQueue orders={orders} completeOrder={completeOrder} role={role} />
+          </>}
         </>
       )}
     </div>
