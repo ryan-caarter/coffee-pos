@@ -70,13 +70,10 @@ const App = () => {
               Welcome to Mongrel Mojo!
             </h1>
           </div>}
-          {role === "Customer" ?
-           <OrderForm addOrder={addOrder} role={role}/> : 
-          <>
-            <h2>Queue</h2>
-            <OrderQueue orders={orders} completeOrder={completeOrder} role={role} />
-          </>}
-        </>
+          {role === "Customer" && <OrderForm addOrder={addOrder} role={role}/>}
+          <h2>Queue</h2>
+          <OrderQueue orders={orders} completeOrder={completeOrder} role={role} />
+          </>
       )}
     </div>
   );
