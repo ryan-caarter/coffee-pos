@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 const coffeeOptions = ["Tea", "Espresso", "Americano", "Flat White", "Iced Latte", "Iced Chocolate"];
-const pastryOptions = ["Hot Cross Bun", "Cupcake", "Almond Croissant", "Cheese Roll"];
+const pastryOptions = ["Hot Cross Bun", "Cupcake", "Almond Croissant", "Carrot Cake"];
 
 const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
