@@ -1,8 +1,8 @@
 // src/OrderForm.js
 import React, { useState } from "react";
 
-const coffeeOptions = ["Espresso", "Latte", "Cappuccino", "Americano", "Flat White", "Iced Latte", "Iced Chocolate", "Hot Chocolate"];
-const pastryOptions = ["Croissant", "Caramel Slice", "Crookie", "Blueberry Muffin"];
+const coffeeOptions = ["Tea", "Espresso", "Americano", "Flat White", "Iced Latte", "Iced Chocolate"];
+const pastryOptions = ["Hot Cross Bun", "Cupcake", "Almond Croissant", "Cheese Roll"];
 
 const OrderForm = ({ addOrder }) => {
   const [selectedCoffee, setSelectedCoffee] = useState("");
@@ -65,9 +65,8 @@ const OrderForm = ({ addOrder }) => {
             <h4>{selectedCoffee}</h4>
             <select className="option" name="milkType" onChange={(e) => setMilkType(e.target.value)}>
               <option value="Oat">Oat Milk</option>
-              <option value="Coconut">Coconut Milk</option>
-              <option value="Soy">Soy Milk</option>
               <option value="Regular">Regular Milk</option>
+              <option value="None">None</option>
             </select>
             <br></br>
             <br></br>
@@ -77,8 +76,11 @@ const OrderForm = ({ addOrder }) => {
 
       {(selectedPastry || selectedCoffee) && 
       <>
+      <p style={{ fontSize: '10px' }}><i>All items are to be paid by acquistion of an undesirable item in the garage. <br></br>
+      Items are non-refundable. Coffee mugs used are also owned by the user after use. <br></br>
+      By submitting an order to this service you hereby agree to these terms.</i></p>
       <br></br>
-      <br></br>
+      {/* <br></br> */}
       <hr style={{ border: 'none', height: '5px', backgroundColor: 'rgb(74, 111, 74)' }}></hr> 
 
       <br></br>
@@ -94,7 +96,7 @@ const OrderForm = ({ addOrder }) => {
       <input
         className="option"
         type="text"
-        placeholder="Extra notes, dietary requirements"
+        placeholder="Tea type, extra notes, dietary requirements etc."
         value={extraNotes}
         onChange={(e) => setExtraNotes(e.target.value)}
       />
